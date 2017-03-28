@@ -1,5 +1,5 @@
-resource "aws_codepipeline" "landmark_pkg_builder" {
-  name     = "Landmark_Package_Builder"
+resource "aws_codepipeline" "pkg_builder_tester_pipeline" {
+  name     = "Package_Builder_Tester"
   role_arn = "${aws_iam_role.codepipeline_role.arn}"
 
   artifact_store {

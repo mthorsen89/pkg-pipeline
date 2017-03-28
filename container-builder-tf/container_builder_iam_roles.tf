@@ -1,5 +1,5 @@
-resource "aws_iam_role" "codepipeline_role" {
-  name = "codepipeline_role"
+resource "aws_iam_role" "container_builder_codepipeline_role" {
+  name = "container_builder_codepipeline_role"
 
   assume_role_policy = <<EOF
 {
@@ -17,8 +17,8 @@ resource "aws_iam_role" "codepipeline_role" {
 EOF
 }
 
-resource "aws_iam_role" "codebuild_role" {
-  name = "codebuild_role"
+resource "aws_iam_role" "container_builder_codebuild_role" {
+  name = "container_builder_codebuild_role"
 
   assume_role_policy = <<EOF
 {
