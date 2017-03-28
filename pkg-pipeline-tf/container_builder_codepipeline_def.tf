@@ -3,7 +3,7 @@ resource "aws_codepipeline" "container_builder_pipeline" {
   role_arn = "${aws_iam_role.container_builder_codepipeline_role.arn}"
 
   artifact_store {
-    location = "${aws_s3_bucket.container_builder_s3_bucket.bucket}"
+    location = "${aws_s3_bucket.codepipeline_s3_bucket.bucket}"
     type     = "S3"
   }
 

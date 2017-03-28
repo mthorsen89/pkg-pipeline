@@ -1,5 +1,5 @@
-resource "aws_codebuild_project" "container_builder_build" {
-  name         = "build_container"
+resource "aws_codebuild_project" "build_package_build" {
+  name         = "build_package"
   description  = "This will build the a contaner"
   build_timeout      = "20"
   service_role = "${aws_iam_role.container_builder_codebuild_role.arn}"
@@ -10,16 +10,16 @@ resource "aws_codebuild_project" "container_builder_build" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "aws/codebuild/docker:1.12.1"
+    image        = "${var.container_builder_ecr_repo}/package-builder-container:latest"
     type         = "LINUX_CONTAINER"
 
     environment_variable {
       "name"  = "NAME"
-      "value" = "pkg_builder_container"
+      "value" = ""
     }
     environment_variable {
       "name"  = "VERSION"
-      "value" = "0.0.1"
+      "value" = ""
     }
   }
 
