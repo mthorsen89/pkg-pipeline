@@ -4,17 +4,17 @@ variable "container_builder_github_owner" {
 
 variable "container_builder_github_repo" {
   description = "Container Builder Github Repo"
-  default = "pkg-container-builder"
+  default     = "pkg-container-builder"
 }
 
 variable "container_builder_github_branch" {
   description = "Container Builder Github Branch"
-  default = "master"
+  default     = "master"
 }
 
 variable "codepipeline_s3_bucket" {
   description = "Codepipeline S3 Bucket"
-  default = "codepipeline-us-west-2-89809825"
+  default     = "codepipeline-us-west-2-89809825"
 }
 
 variable "container_builder_ecr_repo" {
@@ -27,10 +27,10 @@ variable "pkg_builder_tester_github_owner" {
 
 variable "pkg_builder_tester_github_repo" {
   description = "Package Builder Github Repo"
-  default = "pkg-builder"
+  default     = "test-rpm"
 }
 
 variable "pkg_builder_tester_github_branch" {
   description = "Package Builder Github Branch"
-  default = "master"
+  default     = "master"
 }

@@ -1,6 +1,7 @@
 resource "aws_iam_role_policy" "container_builder_codepipeline_policy" {
   name = "container_builder_codepipeline_policy"
   role = "${aws_iam_role.container_builder_codepipeline_role.id}"
+
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -133,7 +134,8 @@ resource "aws_iam_policy" "container_builder_codebuild_policy" {
       "Action": [
         "logs:CreateLogGroup",
         "logs:CreateLogStream",
-        "logs:PutLogEvents"
+        "logs:PutLogEvents",
+        "s3:*"
       ]
     },
     {
