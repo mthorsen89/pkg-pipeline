@@ -2,10 +2,6 @@ resource "aws_ecr_repository" "container_builder" {
   name = "${var.container_builder_ecr_repo}"
 }
 
-resource "aws_ecr_repository" "foo" {
-  name = "bar"
-}
-
 resource "aws_ecr_repository_policy" "container_builder_ecr_repo_policy" {
   repository = "${aws_ecr_repository.container_builder.name}"
 
