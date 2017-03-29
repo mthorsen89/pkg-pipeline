@@ -1,5 +1,5 @@
 resource "aws_codepipeline" "pkg_builder_tester_pipeline" {
-  name     = "Package_Builder_Tester"
+  name     = "build_package"
   role_arn = "${aws_iam_role.container_builder_codepipeline_role.arn}"
 
   artifact_store {
@@ -40,24 +40,6 @@ resource "aws_codepipeline" "pkg_builder_tester_pipeline" {
 
       configuration {
         ProjectName = "build_package"
-      }
-    }
-  }
-
-  stage {
-    name = "Test"
-
-    action {
-      name             = "Test"
-      category         = "Build"
-      owner            = "AWS"
-      provider         = "CodeBuild"
-      input_artifacts  = ["built_package"]
-      output_artifacts = ["release_package"]
-      version          = "1"
-
-      configuration {
-        ProjectName = "test_package"
       }
     }
   }

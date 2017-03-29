@@ -14,7 +14,7 @@ variable "container_builder_github_branch" {
 
 variable "codepipeline_s3_bucket" {
   description = "Codepipeline S3 Bucket"
-  default     = "codepipeline-us-west-2-89809825"
+  default     = "codepipeline-us-west-2-898098259"
 }
 
 variable "container_builder_ecr_repo" {
