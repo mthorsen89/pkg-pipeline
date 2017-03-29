@@ -1,8 +1,8 @@
 resource "aws_codebuild_project" "build_package_build" {
-  name         = "build_package"
-  description  = "This will build the a contaner"
-  build_timeout      = "20"
-  service_role = "${aws_iam_role.container_builder_codebuild_role.arn}"
+  name          = "build_package"
+  description   = "This will build the a contaner"
+  build_timeout = "20"
+  service_role  = "${aws_iam_role.container_builder_codebuild_role.arn}"
 
   artifacts {
     type = "CODEPIPELINE"
@@ -10,21 +10,22 @@ resource "aws_codebuild_project" "build_package_build" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image        = "${var.container_builder_ecr_repo}/package-builder-container:latest"
+    image        = "${aws_ecr_repository.container_builder.repository_url}"
     type         = "LINUX_CONTAINER"
 
     environment_variable {
       "name"  = "NAME"
-      "value" = ""
+      "value" = "Packager"
     }
+
     environment_variable {
       "name"  = "VERSION"
-      "value" = ""
+      "value" = "1"
     }
   }
 
   source {
-    type     = "CODEPIPELINE"
+    type = "CODEPIPELINE"
   }
 
   tags {

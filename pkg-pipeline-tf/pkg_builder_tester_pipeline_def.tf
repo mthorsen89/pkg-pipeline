@@ -19,9 +19,9 @@ resource "aws_codepipeline" "pkg_builder_tester_pipeline" {
       output_artifacts = ["package_definition"]
 
       configuration {
-        Owner      = "${var.pkg_builder_tester_github_owner}"
-        Repo       = "${var.pkg_builder_tester_github_repo}"
-        Branch     = "${var.pkg_builder_tester_github_branch}"
+        Owner  = "${var.pkg_builder_tester_github_owner}"
+        Repo   = "${var.pkg_builder_tester_github_repo}"
+        Branch = "${var.pkg_builder_tester_github_branch}"
       }
     }
   }
@@ -30,13 +30,13 @@ resource "aws_codepipeline" "pkg_builder_tester_pipeline" {
     name = "Build"
 
     action {
-      name            = "Build"
-      category        = "Build"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      input_artifacts = ["package_definition"]
+      name             = "Build"
+      category         = "Build"
+      owner            = "AWS"
+      provider         = "CodeBuild"
+      input_artifacts  = ["package_definition"]
       output_artifacts = ["built_package"]
-      version         = "1"
+      version          = "1"
 
       configuration {
         ProjectName = "build_package"
@@ -45,16 +45,16 @@ resource "aws_codepipeline" "pkg_builder_tester_pipeline" {
   }
 
   stage {
-    name = "Build"
+    name = "Test"
 
     action {
-      name            = "Build"
-      category        = "Build"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      input_artifacts = ["built_package"]
+      name             = "Test"
+      category         = "Build"
+      owner            = "AWS"
+      provider         = "CodeBuild"
+      input_artifacts  = ["built_package"]
       output_artifacts = ["release_package"]
-      version         = "1"
+      version          = "1"
 
       configuration {
         ProjectName = "test_package"
