@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Replace default environment variables with your inputs
+
 if [ -z "$AWS_REGION" ]; then
     echo "Need to set AWS region"
     echo "Enter AWS region"
@@ -7,5 +9,8 @@ if [ -z "$AWS_REGION" ]; then
 fi
 
 export TF_VAR_container_builder_github_owner="foobar"
-export TF_VAR_pkg_builder_tester_github_owner="foobar"
+export TF_VAR_pkg_builder_github_owner="foobar"
 export TF_VAR_codepipeline_s3_bucket=codepipeline-${AWS_REGION}-${RANDOM}
+export TF_VAR_container_builder_github_repo="pkg-container-builder"
+export TF_VAR_pkg_builder_github_repo="test-rpm"
+export GITHUB_TOKEN=""

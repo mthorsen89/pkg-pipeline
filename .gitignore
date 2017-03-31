@@ -1,3 +1,4 @@
 *.tfstate*
 *.DS
 .terraform/
+env_variables.sh

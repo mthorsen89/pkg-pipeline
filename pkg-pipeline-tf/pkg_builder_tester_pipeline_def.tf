@@ -19,9 +19,9 @@ resource "aws_codepipeline" "pkg_builder_tester_pipeline" {
       output_artifacts = ["package_definition"]
 
       configuration {
-        Owner  = "${var.pkg_builder_tester_github_owner}"
-        Repo   = "${var.pkg_builder_tester_github_repo}"
-        Branch = "${var.pkg_builder_tester_github_branch}"
+        Owner  = "${var.pkg_builder_github_owner}"
+        Repo   = "${var.pkg_builder_github_repo}"
+        Branch = "${var.pkg_builder_github_branch}"
       }
     }
   }

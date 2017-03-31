@@ -20,47 +20,14 @@ resource "aws_iam_role_policy" "container_builder_codepipeline_policy" {
           "s3:PutObject"
         ],
         "Resource": [
-          "arn:aws:s3:::codepipeline*",
-          "arn:aws:s3:::elasticbeanstalk*"
+          "arn:aws:s3:::codepipeline*"
         ],
         "Effect": "Allow"
       },
       {
         "Action": [
-          "codecommit:CancelUploadArchive",
-          "codecommit:GetBranch",
-          "codecommit:GetCommit",
-          "codecommit:GetUploadArchiveStatus",
-          "codecommit:UploadArchive"
-        ],
-        "Resource": "*",
-        "Effect": "Allow"
-      },
-      {
-        "Action": [
-          "codedeploy:CreateDeployment",
-          "codedeploy:GetApplicationRevision",
-          "codedeploy:GetDeployment",
-          "codedeploy:GetDeploymentConfig",
-          "codedeploy:RegisterApplicationRevision"
-        ],
-        "Resource": "*",
-        "Effect": "Allow"
-      },
-      {
-        "Action": [
-          "elasticbeanstalk:*",
-          "ec2:*",
-          "elasticloadbalancing:*",
-          "autoscaling:*",
-          "cloudwatch:*",
           "s3:*",
-          "sns:*",
-          "cloudformation:*",
-          "rds:*",
-          "sqs:*",
-          "ecs:*",
-          "iam:PassRole"
+          "ecs:*"
         ],
         "Resource": "*",
         "Effect": "Allow"
@@ -69,37 +36,6 @@ resource "aws_iam_role_policy" "container_builder_codepipeline_policy" {
         "Action": [
           "lambda:InvokeFunction",
           "lambda:ListFunctions"
-        ],
-        "Resource": "*",
-        "Effect": "Allow"
-      },
-      {
-        "Action": [
-          "opsworks:CreateDeployment",
-          "opsworks:DescribeApps",
-          "opsworks:DescribeCommands",
-          "opsworks:DescribeDeployments",
-          "opsworks:DescribeInstances",
-          "opsworks:DescribeStacks",
-          "opsworks:UpdateApp",
-          "opsworks:UpdateStack"
-        ],
-        "Resource": "*",
-        "Effect": "Allow"
-      },
-      {
-        "Action": [
-          "cloudformation:CreateStack",
-          "cloudformation:DeleteStack",
-          "cloudformation:DescribeStacks",
-          "cloudformation:UpdateStack",
-          "cloudformation:CreateChangeSet",
-          "cloudformation:DeleteChangeSet",
-          "cloudformation:DescribeChangeSet",
-          "cloudformation:ExecuteChangeSet",
-          "cloudformation:SetStackPolicy",
-          "cloudformation:ValidateTemplate",
-          "iam:PassRole"
         ],
         "Resource": "*",
         "Effect": "Allow"
